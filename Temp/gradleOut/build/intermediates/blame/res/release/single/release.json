@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\build\\intermediates\\res\\merged\\release\\mipmap-ldpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\src\\main\\res\\mipmap-ldpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\build\\intermediates\\res\\merged\\release\\mipmap-mdpi_app_icon.png.flat",
+        "source": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\src\\main\\res\\mipmap-mdpi\\app_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\build\\intermediates\\res\\merged\\release\\mipmap-mdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\src\\main\\res\\mipmap-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\build\\intermediates\\res\\merged\\release\\mipmap-hdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\src\\main\\res\\mipmap-hdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_background.png"
+    }
+]

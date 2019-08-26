@@ -1,0 +1,4 @@
+#Mon Aug 26 00:28:00 BRT 2019
+base.0=C\:\\Users\\marlo\\Projetos Unity\\Shooter2D\\Temp\\gradleOut\\build\\intermediates\\transforms\\dexMerger\\release\\0
+path.0=classes.dex
+renamed.0=classes.dex
