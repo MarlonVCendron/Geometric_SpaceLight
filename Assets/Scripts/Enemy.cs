@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private float tempTargetX;
     private float targetX = 2.6f;
     private float health;
+    private bool dead = false;
 
 
     // Start is called before the first frame update
@@ -24,27 +25,31 @@ public class Enemy : MonoBehaviour
     {
         targetY = Random.Range(4.5f, -1f);
         tempTargetX  = Random.Range(-2f, 2f);
-        speed = Random.Range(0.8f, 2f);
-        fireRate = 0.9f;
+        speed = Random.Range(0.01f, 0.05f);
+        fireRate = 1f;
         health = startingHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-
-        if (Time.time >= nextTimeToShoot)
+        if (!dead)
         {
-            nextTimeToShoot = Time.time + 1 / fireRate;
-            Shoot();
-        }
+            Move();
 
-        if (health <= 0)
-        {
-            Camera.main.GetComponent<ScoreManager>().IncreaseScore();
+            if (Time.time >= nextTimeToShoot)
+            {
+                nextTimeToShoot = Time.time + 1 / fireRate;
+                Shoot();
+            }
 
-            Destroy(gameObject);
+            if (health <= 0)
+            {
+                Camera.main.GetComponent<ScoreManager>().IncreaseScore();
+
+                dead = true;
+                Explode();
+            }
         }
     }
 
@@ -57,15 +62,15 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            if(Mathf.Abs(Mathf.Abs(p.x) - Mathf.Abs(targetX)) < 0.2f)
+            if(Mathf.Abs(p.x - targetX) < 0.1f)
             {
                 targetX *= -1;
                 speed *= -1;
             }
 
-            transform.position = Vector3.Lerp(p, new Vector3(p.x + speed, p.y, 0f), Time.deltaTime);
+            //transform.position = Vector3.Lerp(p, new Vector3(p.x + speed, p.y, 0f), Time.deltaTime);
+            transform.position = new Vector2(p.x + speed, p.y);
         }
-
     }
 
     private void Shoot()
@@ -78,8 +83,6 @@ public class Enemy : MonoBehaviour
         bulletController.damage = bulletDamage;
         bulletController.direction = new Vector3(0,-1,0);
         bulletController.targetTag = "Player";
-
-        Destroy(newBullet, 4f);
     }
 
     public void decreaseHealth(float amount)
@@ -93,5 +96,17 @@ public class Enemy : MonoBehaviour
         bulletDamage *= d;
         fireRate = d * 0.9f;
         speed += d / 1.1f;
+    }
+
+    void Explode()
+    {
+        Camera.main.GetComponent<CameraShake>().ShakeCamera(1f, 0.05f);
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        transform.GetChild(0).gameObject.SetActive(false);
+        ParticleSystem deathExplosion = transform.GetChild(1).GetComponent<ParticleSystem>();
+        deathExplosion.Play();
+        Destroy(gameObject, deathExplosion.duration);
     }
 }

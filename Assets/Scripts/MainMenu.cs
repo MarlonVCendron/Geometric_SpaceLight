@@ -15,4 +15,10 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void MenuButton()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+
 }

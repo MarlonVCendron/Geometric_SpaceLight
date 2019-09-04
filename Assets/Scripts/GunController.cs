@@ -6,8 +6,9 @@ public class GunController : MonoBehaviour
 {
 
     public GameObject bullet;
-    public float fireRate = 10f;
-    public float speed = 0.25f;
+    public float fireRate;
+    public float speed;
+    public float damage;
     bool buttonPressed;
     
     private float nextTimeToShoot = 0f;
@@ -37,11 +38,9 @@ public class GunController : MonoBehaviour
 
         BulletController bulletController = newBullet.GetComponent<BulletController>();
         bulletController.speed = speed;
-        bulletController.damage = 2f;
+        bulletController.damage = damage;
         bulletController.direction = new Vector3(0,1,0);
         bulletController.targetTag = "Enemy";
-
-        Destroy(newBullet, 2f);
     }
 
     public void ActivateRagePower(float t)

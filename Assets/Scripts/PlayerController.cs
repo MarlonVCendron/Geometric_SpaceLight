@@ -13,8 +13,10 @@ public class PlayerController : MonoBehaviour
     private float health = 5f;
     public bool dead = false;
 
+
     void Update()
     {
+
         if (!dead)
         {
             for (int i = 0; i < Input.touchCount; i++)
@@ -28,12 +30,11 @@ public class PlayerController : MonoBehaviour
 
             if (health <= 0)
             {
-                //StartCoroutine(PlayerDied());
-                UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+                StartCoroutine(Explode());
             }
 
             RectTransform BarRectTransform = healthBar.transform as RectTransform;
-            BarRectTransform.sizeDelta = new Vector2(health * 300f / 5f, BarRectTransform.sizeDelta.y);
+            BarRectTransform.sizeDelta = new Vector2(health * 700f / 5f, BarRectTransform.sizeDelta.y);
         }
     }
 
@@ -59,14 +60,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //IEnumerator PlayerDied()
-    //{
-       // dead = true;
-        //explosionParticles.Play();
-        //gameObject.GetComponent<Renderer>().enabled = false;
+   IEnumerator Explode()
+    {
+        dead = true;
 
-        //yield return new WaitForSeconds(2f);
+        Camera.main.GetComponent<CameraShake>().ShakeCamera(1f, 0.05f);
 
-        //UnityEngine.SceneManagement.SceneManager.LoadScene(2);
-    //}
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        transform.GetChild(0).gameObject.SetActive(false);
+
+        ParticleSystem deathExplosion = transform.GetChild(1).GetComponent<ParticleSystem>();
+        deathExplosion.Play();
+
+        yield return new WaitForSeconds(deathExplosion.duration);
+
+        Destroy(gameObject);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+    }
+
 }

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour
 {
-    public enum SpawnState {SPAWNING, WAITING, COUNTING}; 
+    public enum SpawnState {SPAWNING, WAITING, COUNTING};
+
+    public Asteroid asteroid;
 
     [System.Serializable]
     public class Wave
@@ -117,6 +119,7 @@ public class EnemyGenerator : MonoBehaviour
     void SpawnEnemy(GameObject _enemy)
     {
         Instantiate(_enemy, new Vector3(Random.Range(-5, 5),transform.position.y, 0f), Quaternion.identity);
+        Instantiate(asteroid, new Vector3(Random.Range(-5, 5), Random.Range(6f, 8f), 0f), Quaternion.identity);
     }
 
 }

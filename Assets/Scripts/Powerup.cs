@@ -28,7 +28,6 @@ public class Powerup : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             applyEffect();
-            Destroy(gameObject);
         }
     }
 
@@ -38,18 +37,44 @@ public class Powerup : MonoBehaviour
         {
             case "health":
                 playerController.addHealth(amountHealthPowerUp);
+                PlayParticle(powerupType);
                 break;
             case "rage":
                 gunController.ActivateRagePower(durationRagePowerUp);
+                PlayParticle(powerupType);
                 break;
             case "shield":
                 playerController.ActivateShieldPower(durationShieldPowerUp);
+                Destroy(gameObject);
                 break;
             default:
                 Debug.Log("Unknown powerup");
+                Destroy(gameObject);
                 break;
         }
+
     }
 
 
+    void PlayParticle(string name)
+    {
+        ParticleSystem p = null;
+        switch (name)
+        {
+            case "health":
+                p = transform.GetChild(1).GetComponent<ParticleSystem>();
+                break;
+            case "rage":
+                p = transform.GetChild(2).GetComponent<ParticleSystem>();
+                break;
+
+        }
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        transform.GetChild(0).gameObject.SetActive(false);
+
+        p.Play();
+        Destroy(gameObject, p.duration);
+    }
 }

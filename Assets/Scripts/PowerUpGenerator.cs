@@ -5,9 +5,11 @@ using UnityEngine;
 public class PowerUpGenerator : MonoBehaviour
 {
        
+    public enum SpawnState {WAITING, COUNTING}; 
 
     public float timeBetweenPowerups;
     public GameObject powerup;
+    public SpawnState state = SpawnState.COUNTING;
 
     private string[] PowerupTypes = {"health", "rage", "shield"};
     private float powerupCountdown;
@@ -20,9 +22,21 @@ public class PowerUpGenerator : MonoBehaviour
 
     void Update()
     {
-        if(powerupCountdown <= 0f)
+        if (state == SpawnState.WAITING)
         {
-            spawnPowerup();
+            if (!isPowerupSpawned())
+            {
+                WaveCompleted();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        if(powerupCountdown <= 0)
+        {
+            SpawnPowerup();
         }
         else
         {
@@ -30,17 +44,23 @@ public class PowerUpGenerator : MonoBehaviour
         }
     }
 
-    private void spawnPowerup()
+    void WaveCompleted()
     {
-        if (!isPowerupSpawned())
-        {
-            float randX = Random.Range(-2, 2);
-            float randY = Random.Range(-3, 4);
+        state = SpawnState.COUNTING;
+        powerupCountdown = timeBetweenPowerups;
+    }
 
-            GameObject newPowerup = Instantiate(powerup, new Vector2(randX, randY), Quaternion.identity);
-            Powerup powerupScript = newPowerup.GetComponent<Powerup>();
-            powerupScript.powerupType = getRandomPowerupType();
-        }
+
+    private void SpawnPowerup()
+    {
+        float randX = Random.Range(-2, 2);
+        float randY = Random.Range(-3, 4);
+
+        GameObject newPowerup = Instantiate(powerup, new Vector2(randX, randY), Quaternion.identity);
+        Powerup powerupScript = newPowerup.GetComponent<Powerup>();
+        powerupScript.powerupType = getRandomPowerupType();
+
+        state = SpawnState.WAITING;
     }
 
     private string getRandomPowerupType()

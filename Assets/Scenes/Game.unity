@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f4bc6c6289af5438ea1b37300c5f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  asteroid: {fileID: 6688524913748506236, guid: 8c04d7430a09ced40bad640c2529fad3,
+    type: 3}
   waves:
   - enemy: {fileID: 8761120295410662900, guid: 74b81afe4582abf42af8419e995e6774, type: 3}
     rate: 1
@@ -157,16 +159,16 @@ MonoBehaviour:
     rate: 1
     count: 3
   - enemy: {fileID: 8761120295410662900, guid: 74b81afe4582abf42af8419e995e6774, type: 3}
-    rate: 0.5
-    count: 5
+    rate: 1.5
+    count: 4
   - enemy: {fileID: 8761120295410662900, guid: 74b81afe4582abf42af8419e995e6774, type: 3}
     rate: 1
-    count: 5
+    count: 4
   - enemy: {fileID: 8761120295410662900, guid: 74b81afe4582abf42af8419e995e6774, type: 3}
-    rate: 2
-    count: 8
+    rate: 0.5
+    count: 4
   timeBetweenWaves: 1
-  waveCountdown: 0
+  waveCountdown: 2
   state: 2
 --- !u!4 &26760290
 Transform:
@@ -254,8 +256,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15}
-  m_SizeDelta: {x: 300, y: 10}
+  m_AnchoredPosition: {x: 0, y: -10}
+  m_SizeDelta: {x: 700, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &207778898 stripped
 GameObject:
@@ -278,12 +280,12 @@ PrefabInstance:
     - target: {fileID: 3270503588856145189, guid: 1786671ea60ee224a9951f269dd885b4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.02
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3270503588856145189, guid: 1786671ea60ee224a9951f269dd885b4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.55
+      value: -2.52
       objectReference: {fileID: 0}
     - target: {fileID: 3270503588856145189, guid: 1786671ea60ee224a9951f269dd885b4,
         type: 3}
@@ -349,6 +351,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -364,6 +367,23 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c9fab82df85604db3cbb48ae3c7fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugMode: 0
+  shakeAmount: 0
+  shakeDuration: 0
+  smooth: 0
+  smoothAmount: 5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -634,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -920,7 +940,7 @@ GameObject:
   - component: {fileID: 1957079028}
   m_Layer: 0
   m_Name: PowerUpGenerator
-  m_TagString: Untagged
+  m_TagString: PUG
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -939,6 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenPowerups: 15
   powerup: {fileID: 8341257522180215174, guid: 3cbbb5607ecbe2347a794559e9f1e3e1, type: 3}
+  state: 1
 --- !u!4 &1957079029
 Transform:
   m_ObjectHideFlags: 0
@@ -1033,6 +1054,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750436395795552708, guid: 142937b8bc7f9984cbd53b64a4d09d76,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7750436395795552710, guid: 142937b8bc7f9984cbd53b64a4d09d76,
         type: 3}
