@@ -17,8 +17,8 @@ public class Asteroid : MonoBehaviour
     {
         size = Mathf.FloorToInt(Random.Range(1, 5));
 
-        health = size * 15f;
-        MaxVelocity = 3f / size;
+        health = size * 8f;
+        MaxVelocity = 2.5f / size;
         transform.localScale = new Vector3((float) size/ 30, (float) size / 30, 0);
         UpdateColliderSize();
     }
@@ -41,7 +41,7 @@ public class Asteroid : MonoBehaviour
 
     void Explode()
     {
-        Camera.main.GetComponent<CameraShake>().ShakeCamera(1f, 0.05f);
+        Camera.main.GetComponent<CameraShake>().ShakeCamera(0.5f, 0.05f);
 
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;

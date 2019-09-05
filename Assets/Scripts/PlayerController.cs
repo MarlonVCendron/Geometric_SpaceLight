@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
                 Touch touch = Input.GetTouch(i);
                 Vector3 cameraPointPosition = Camera.main.ScreenToWorldPoint(touch.position);
                 Vector3 targetPosition = new Vector3(cameraPointPosition.x, cameraPointPosition.y, 0f);
-                transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 4f);
+                transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 7f);
 
             }
 

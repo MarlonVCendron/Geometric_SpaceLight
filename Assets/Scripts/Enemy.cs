@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
 
     void Explode()
     {
-        Camera.main.GetComponent<CameraShake>().ShakeCamera(1f, 0.05f);
+        Camera.main.GetComponent<CameraShake>().ShakeCamera(0.5f, 0.05f);
 
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;

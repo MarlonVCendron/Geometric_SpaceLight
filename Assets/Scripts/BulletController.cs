@@ -11,6 +11,7 @@ public class BulletController : MonoBehaviour
     public string targetTag;
     Vector2 screenPosition;
 
+
     void Update()
     {
         transform.position += direction * speed;
